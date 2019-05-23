@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1068442937322",
+    "firebase_url": "https://steam-59ed8.firebaseio.com",
+    "project_id": "steam-59ed8",
+    "storage_bucket": "steam-59ed8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068442937322:android:644d302147660043",
+        "android_client_info": {
+          "package_name": "com.example.steam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068442937322-vro7944c99n6auq9o5481gjl3l3injt8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.steam",
+            "certificate_hash": "954d6ddf6b9112fdedfbbca53f72bef63e16a3a4"
+          }
+        },
+        {
+          "client_id": "1068442937322-16habd4paklp5jjd0aibt7s4td9vivbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3L2Mmq9JHYPK7XN7zXTUPBdLYbtRP1Ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068442937322-16habd4paklp5jjd0aibt7s4td9vivbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
