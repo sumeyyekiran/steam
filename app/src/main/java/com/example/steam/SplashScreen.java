@@ -8,8 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 public class SplashScreen extends AppCompatActivity {
-View v;
-Animation uptodown;
+    private View v;
+    private Animation uptodown;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,7 @@ Animation uptodown;
                 }catch(InterruptedException e){
                     e.printStackTrace();
                 }finally{
-                    Intent intent = new Intent(SplashScreen.this,MainActivity.class);
+                    Intent intent = new Intent(SplashScreen.this,LoginActivity.class);
                     startActivity(intent);
                 }
             }

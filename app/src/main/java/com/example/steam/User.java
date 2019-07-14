@@ -5,6 +5,7 @@ public class User {
     private String uuid;
     private String name;
     private String email;
+    private Boolean role;
 
     public User(){
 
@@ -34,6 +35,11 @@ public class User {
         this.email = email;
     }
 
+    public Boolean getRole() {
+        return role;
+    }
 
-
+    public void setRole(Boolean role) {
+        this.role = role;
+    }
 }

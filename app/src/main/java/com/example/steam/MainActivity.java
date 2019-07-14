@@ -1,12 +1,20 @@
 package com.example.steam;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,82 +25,62 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private Button loginBttn, registerBttn;
-    private EditText userEmail, userPassword;
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser(); // authenticated user
 
-        if(firebaseUser != null){ // check user session
-
-            Intent i = new Intent(MainActivity.this,HomeActivity.class);
-            startActivity(i);
-            finish();
-        }
-
-        loginBttn = findViewById(R.id.login);
-
-        registerBttn = findViewById(R.id.register);
-        userEmail = findViewById(R.id.email);
-        userPassword = findViewById(R.id.parola);
-
-        registerBttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        loginBttn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(userEmail.getText().toString().length()>0 && userPassword.getText().toString().length()>0){
-
-                    loginControl();
-
-                }else{
-
-                    Toast.makeText(getApplicationContext(),"Lütfen ilgili alanları giriniz!",Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
-        });
-
-
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    private void loginControl() {
 
-        firebaseAuth.signInWithEmailAndPassword(userEmail.getText().toString(),userPassword.getText().toString()).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-                if(task.isSuccessful()){
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+
+                    return true;
+                case R.id.navigation_search:
+                    SearchFragment maFragment=new SearchFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,maFragment).commit();
+
+                    return true;
+                case R.id.navigation_profile:
+                    ProfileFragment mainFragment=new ProfileFragment();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.blank_layout,mainFragment).commit();
 
 
-                    Intent intent = new Intent(MainActivity.this,HomeActivity.class);
-                    intent.putExtra("email",userEmail.getText().toString());
-                    startActivity(intent);
-                    //Toast.makeText(getApplicationContext(),"GİRİŞ BAŞARILI",Toast.LENGTH_SHORT).show();
+                case R.id.navigation_logout:
 
-                    // giris yapılacak baska bir activity e yonlendirme
-                }else {
-                    Toast.makeText(getApplicationContext(),""+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Çıkış yapmak istediğinize emin misiniz?")
+                                .setPositiveButton("Evet", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
 
-                }
+                                        firebaseAuth.signOut();
+                                        finish();
+                                    }
+                                })
+                                .setNegativeButton("Hayır", null)
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                        break;
             }
-        });
+            return true;
 
-    }
+            }
+
+
+
+    };
+
+
 }
+

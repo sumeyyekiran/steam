@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".SplashScreen"
+    android:background="#ffffff">
 
-    <View
+    <ImageView
         android:layout_width="match_parent"
         android:id="@+id/view"
-        android:layout_height="600dp"
+        android:layout_height="400dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_centerInParent="true"
         android:layout_marginEnd="0dp"
-        android:background="@drawable/st"
+        android:background="@drawable/slogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
