@@ -12,16 +12,16 @@
         android:roundIcon="@drawable/star"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SanatciActivity"></activity>
+        <activity android:name=".Activity.SanatciActivity"></activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

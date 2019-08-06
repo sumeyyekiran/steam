@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
+    tools:context=".Activity.RegisterActivity"
     android:background="#ffffff">
 
     <FrameLayout
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_percent="0.61" />
 
             <EditText
                 android:id="@+id/regName"
@@ -47,18 +47,35 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="18dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/edit_text_style"
                 android:ems="10"
                 android:hint="Adınızı giriniz"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/regMail"
+                app:layout_constraintBottom_toTopOf="@+id/regusername"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <EditText
+                android:id="@+id/regusername"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="76dp"
+                android:background="@drawable/edit_text_style"
+                android:ems="10"
+                android:hint="Kullanıcı adınızı giriniz"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.505"
+                app:layout_constraintStart_toStartOf="parent" />
             <EditText
                 android:id="@+id/regMail"
                 android:layout_width="300dp"
@@ -72,7 +89,7 @@
                 android:background="@drawable/edit_text_style"
                 android:ems="10"
                 android:hint="E-mail adresini giriniz"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -96,23 +113,6 @@
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
 
 
-            <EditText
-                android:id="@+id/regPassword2"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="18dp"
-                android:background="@drawable/edit_text_style"
-                android:ems="10"
-                android:hint="Şifrenizi tekrar giriniz"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/regPassword" />
 
             <Button
                 android:id="@+id/regBtn"
@@ -130,7 +130,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/regPassword2" />
+                app:layout_constraintTop_toBottomOf="@+id/regPassword" />
 
             <ProgressBar
                 android:id="@+id/regProgressBar"
@@ -144,15 +144,15 @@
 
 
             <RadioGroup
+                android:id="@+id/radiorole"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="28dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/regName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                android:id="@+id/radiorole">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <RadioButton
                     android:id="@+id/hayran"
