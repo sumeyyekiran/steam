@@ -7,18 +7,29 @@ public class User {
     private String username;
     private String fullname;
     private String email;
-    private String ImageLink;
+    private int ImageLink;
+    private String Role;
 
-    public User(String uuid, String username, String fullname, String email, String imageLink) {
+    public String getRole() {
+        return Role;
+    }
+
+    public void setRole(String role) {
+        Role = role;
+    }
+
+    public User(String uuid, String username, String fullname, String email, int imageLink, String role) {
         Uuid = uuid;
         this.username = username;
         this.fullname = fullname;
         this.email = email;
         this.ImageLink=imageLink;
+        this.Role= role;
 
     }
 
     public User() {
+
     }
 
     public String getUuid() {
@@ -53,11 +64,11 @@ public class User {
         this.email = email;
     }
 
-    public String getImageLink() {
+    public int getImageLink() {
         return ImageLink;
     }
 
-    public void setImageLink(String imageLink) {
+    public void setImageLink(int imageLink) {
         ImageLink = imageLink;
     }
 }

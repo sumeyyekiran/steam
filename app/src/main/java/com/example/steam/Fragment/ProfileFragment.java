@@ -1,6 +1,5 @@
-package com.example.steam;
+package com.example.steam.Fragment;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -18,18 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Bundle;
 
-import com.example.steam.Fragment.SettingsFragment;
+import com.example.steam.Activity.PostActivity;
+import com.example.steam.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -40,12 +34,12 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
     private TextView userName, kullanici;
     private ImageView selectedImageView, settings;
-    FirebaseStorage firebaseStorage;
-    FirebaseAuth firebaseAuth;
-    StorageReference storageReference;
-    Button duzenle, update;
+    private FirebaseStorage firebaseStorage;
+    private FirebaseAuth firebaseAuth;
+    private StorageReference storageReference;
+    private Button edit, update,post;
     ProgressDialog progressDialog;
-    Uri uri;
+    private Uri uri;
 
     private static final int GALLERY_INTENT = 2;
     @Override
@@ -92,13 +86,22 @@ public class ProfileFragment extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         storageReference = firebaseStorage.getReference();
         userName.setText(user.getEmail());
-        duzenle = view.findViewById(R.id.duzenle);
+        edit = view.findViewById(R.id.duzenle);
         update = view.findViewById(R.id.guncelle);
         selectedImageView = view.findViewById(R.id.userPhoto);
+        post= view.findViewById(R.id.post);
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             Intent intent = new Intent(getActivity(), PostActivity.class);
+             startActivity(intent);
+            }
+        });
 
 
 
-        duzenle.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -139,7 +142,7 @@ public class ProfileFragment extends Fragment {
                     progressDialog.setMessage("Yükleniyor...");
                     progressDialog.setCancelable(false);
                     progressDialog.show();
-                    StorageReference storageRef = firebaseStorage.getReference().child("users").child(firebaseAuth.getCurrentUser().getUid());
+                    StorageReference storageRef = firebaseStorage.getReference().child("Users").child(firebaseAuth.getCurrentUser().getUid());
                     storageRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -164,8 +167,6 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
-
 
         return view;
 

@@ -1,23 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.SplashScreen"
-    android:background="#ffffff">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:id="@+id/view"
-        android:layout_height="400dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="0dp"
-        android:background="@drawable/slogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="28dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="#fafafafa"
+        android:layout_marginTop="180dp"
+        android:paddingStart="74dp"
+        android:background="@drawable/background"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="S-TEAM"
+        android:fontFamily="@font/medium"/>
+
+    <Button
+        android:fontFamily="@font/book"
+        android:id="@+id/splashlogin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Giriş yap"
+        android:layout_marginStart="90dp"
+        android:textColor="#fafafa"
+        android:layout_marginTop="280dp"
+        android:background="@drawable/butonshape"/>
+
+    <TextView
+        android:id="@+id/uye"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:paddingStart="5dp"
+        android:fontFamily="@font/lighy"
+        android:text="Üye değil misin?"
+        android:textColor="#fafafa"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/link_register1"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/uye"
+        android:layout_marginLeft="206dp"
+        android:layout_marginTop="550dp"
+        android:text="Üye ol"
+        android:fontFamily="@font/book"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp"></TextView>
 </RelativeLayout>

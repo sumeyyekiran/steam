@@ -2,9 +2,10 @@ package com.example.steam.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.steam.Models.User;
 import com.example.steam.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +38,18 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+        View view= getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.KITKAT) {
+            view.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+        }
         username= findViewById(R.id.regusername);
         fullname= findViewById(R.id.regName);
         email = findViewById(R.id.regMail);
@@ -99,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     pd.dismiss();
-                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(RegisterActivity.this, FanActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
 
@@ -113,14 +125,14 @@ public class RegisterActivity extends AppCompatActivity {
                         hashMap.put("id", userid);
                         hashMap.put("username", username.toLowerCase());
                         hashMap.put("fullname", fullname);
-                        hashMap.put("role", "sanatçı");
+                        hashMap.put("role", "star");
 
                         databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     pd.dismiss();
-                                    Intent intent = new Intent(RegisterActivity.this, SanatciActivity.class);
+                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
 
@@ -137,5 +149,11 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent= new Intent(RegisterActivity.this, SplashScreen.class);
+        startActivity(intent);
     }
 }

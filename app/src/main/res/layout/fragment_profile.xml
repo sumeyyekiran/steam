@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
+    android:id="@+id/profileId"
     >
 
     <LinearLayout
@@ -24,11 +25,12 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userPhoto"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@mipmap/ic_launcher"
+            android:paddingStart="20dp"
             android:paddingLeft="20dp" />
 
 
@@ -117,7 +119,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
             android:layout_marginStart="140dp"
-            android:background="@drawable/buttonstyle"
+            android:background="@drawable/edit_button_style"
             android:text="Düzenle"
             android:id="@+id/duzenle"
             android:textColor="#ffffff" />
@@ -215,9 +217,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="35dp"
-        android:background="@drawable/buttonstyle"
+        android:background="@drawable/edit_button_style"
         android:text="Güncelle"
         android:id="@+id/guncelle"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="140dp"
+        android:background="@color/GreyTransparent"
+        android:text="post"
+        android:id="@+id/post"
+        android:textColor="#fafafa" />
 
 </LinearLayout>

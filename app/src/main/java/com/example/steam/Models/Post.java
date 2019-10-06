@@ -1,13 +1,17 @@
 package com.example.steam.Models;
 
 public class Post {
-    private String postid;
-    private String postImage;
-    private String description;
-    private String publisher;
+
+    private String postid,postimage,description,publisher;
 
     public Post() {
+    }
 
+    public Post(String postid, String postimage, String description, String publisher) {
+        this.postid = postid;
+        this.postimage = postimage;
+        this.description = description;
+        this.publisher = publisher;
     }
 
     public String getPostid() {
@@ -18,12 +22,12 @@ public class Post {
         this.postid = postid;
     }
 
-    public String getPostImage() {
-        return postImage;
+    public String getPostimage() {
+        return postimage;
     }
 
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
+    public void setPostimage(String postimage) {
+        this.postimage = postimage;
     }
 
     public String getDescription() {
